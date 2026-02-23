@@ -1,0 +1,38 @@
+{
+    "main": {
+        "tasks": "Tapsırmalar",
+        "settings": "Sazlamalar",
+        "success": "Tabıslı!",
+        "success-update": "Derekler jańalandı!",
+        "error": "Qátelik!",
+        "error-update": "Jańalawda qátelik!",
+        "empty": "Bos!"
+    },
+    "statuses": {
+        "new": "Jańa",
+        "in-progress": "Orınlaw barısında",
+        "done": "Islengen"
+    },
+    "priorities": {
+        "low": "Tómen",
+        "medium": "Ortasha",
+        "high": "Biyik"
+    },
+    "table": {
+        "title": "Atı",
+        "desc": "Sıpatlama",
+        "status": "Status",
+        "priority": "U'stemlik",
+        "deadline": "Múddet"
+    },
+    "form": {
+        "create": "Qosıw",
+        "update": "Ózgertiw",
+        "yes": "Awa",
+        "no": "Yaq"
+    },
+    "lang": {
+        "kk": "Qaraqalpaqsha",
+        "ru": "Russha"
+    }
+}
