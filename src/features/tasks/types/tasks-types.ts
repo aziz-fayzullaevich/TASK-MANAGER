@@ -9,13 +9,3 @@ export type Tasks = {
     priority: Priority;
     deadline: string;
 };
-
-export type TaskParams = {
-    _page?: number;
-    _limit?: number;
-    _sort?: string;
-    _order?: 'asc' | 'desc';
-    q?: string;
-    status?: string;
-    priority?: string;
-};

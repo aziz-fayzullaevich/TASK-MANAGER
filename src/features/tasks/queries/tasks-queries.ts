@@ -1,13 +1,13 @@
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { tasksApi } from "../api/tasks-api"
-import type { TaskParams, Tasks } from "../types/tasks-types";
+import type { Tasks } from "../types/tasks-types";
 import { notifications } from "@mantine/notifications";
 import i18n from "../../../shared/config/i18n";
 
-export const useFetchTasks = (params: TaskParams) => {
+export const useFetchTasks = () => {
     return useQuery({
-        queryKey: ['tasks', params],
-        queryFn: () => tasksApi.getAll(params),
+        queryKey: ['tasks'],
+        queryFn: tasksApi.getAll,
         placeholderData: keepPreviousData
     })
 };
