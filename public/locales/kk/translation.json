@@ -4,8 +4,10 @@
         "settings": "Sazlamalar",
         "success": "Tabıslı!",
         "success-update": "Derekler jańalandı!",
+        "success-delete": "Derek óshirildi!",
         "error": "Qátelik!",
         "error-update": "Jańalawda qátelik!",
+        "error-error": "Óshiriwdegi qáte!",
         "empty": "Bos!",
         "main-page": "Bas betke ótiw"
     },
@@ -17,7 +19,7 @@
     "priorities": {
         "low": "Tómen",
         "medium": "Ortasha",
-        "high": "Biyik"
+        "high": "Joqarı"
     },
     "table": {
         "title": "Atı",
@@ -30,7 +32,10 @@
         "create": "Qosıw",
         "update": "Ózgertiw",
         "yes": "Awa",
-        "no": "Yaq"
+        "no": "Yaq",
+         "delete-title": "Wazıypalardı óshiriw",
+        "update-title": "Wazıypalardı ózgertiw",
+        "delete-desc": "Siz bul wazıypanı óshiriwdi qáleysiz be?"
     },
     "lang": {
         "kk": "Qaraqalpaqsha",

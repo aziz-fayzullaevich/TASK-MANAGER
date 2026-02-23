@@ -32,10 +32,10 @@ export const tasksApi = {
         return data as Tasks;
     },
 
-    update: async (id: string, updates: Partial<Tasks>) => {
+    update: async (id: number, body: Partial<Tasks>) => {
         const { data, error } = await supabase
             .from("tasks")
-            .update(updates)
+            .update(body)
             .eq("id", id)
             .select()
             .single();
@@ -45,7 +45,7 @@ export const tasksApi = {
         return data as Tasks;
     },
 
-    delete: async (id: string) => {
+    delete: async (id: number) => {
         const { error } = await supabase
             .from("tasks")
             .delete()
