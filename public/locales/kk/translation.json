@@ -37,7 +37,8 @@
         "no": "Yaq",
         "delete-title": "Wazıypalardı óshiriw",
         "update-title": "Wazıypalardı ózgertiw",
-        "delete-desc": "Siz bul wazıypanı óshiriwdi qáleysiz be?"
+        "delete-desc": "Siz bul wazıypanı óshiriwdi qáleysiz be?",
+        "required-filed": "Májbúriy maydan"
     },
     "lang": {
         "kk": "Qaraqalpaqsha",

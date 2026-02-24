@@ -28,19 +28,20 @@ export const UpdateTask = ({ task }: { task: Tasks }) => {
             <Stack gap="md">
                 <TextInput
                     label={t('table.title')}
+                    {...register("title", { required: t('form.required-filed') })}
                     error={errors.title?.message}
-                    {...register("title", { required: "Title is required" })}
                 />
 
                 <TextInput
                     label={t('table.desc')}
+                    {...register("description", { required: t('form.required-filed') })}
                     error={errors.description?.message}
-                    {...register("description")}
                 />
 
                 <Controller
                     name="status"
                     control={control}
+                    rules={{ required: t('form.required-filed') }}
                     render={({ field }) => (
                         <Select
                             {...field}
@@ -50,6 +51,7 @@ export const UpdateTask = ({ task }: { task: Tasks }) => {
                                 { value: "in_progress", label: `${t('statuses.in-progress')}` },
                                 { value: "done", label: `${t('statuses.done')}` },
                             ]}
+                            error={errors.status?.message}
                         />
                     )}
                 />
@@ -57,6 +59,7 @@ export const UpdateTask = ({ task }: { task: Tasks }) => {
                 <Controller
                     name="priority"
                     control={control}
+                    rules={{ required: t('form.required-filed') }}
                     render={({ field }) => (
                         <Select
                             {...field}
@@ -66,6 +69,7 @@ export const UpdateTask = ({ task }: { task: Tasks }) => {
                                 { value: "medium", label: `${t('priorities.medium')}` },
                                 { value: "high", label: `${t('priorities.high')}` },
                             ]}
+                            error={errors.priority?.message}
                         />
                     )}
                 />
@@ -73,8 +77,8 @@ export const UpdateTask = ({ task }: { task: Tasks }) => {
                 <TextInput
                     label={t('table.deadline')}
                     type="date"
+                    {...register("deadline", { required: t('form.required-filed') })}
                     error={errors.deadline?.message}
-                    {...register("deadline")}
                 />
 
                 <Button

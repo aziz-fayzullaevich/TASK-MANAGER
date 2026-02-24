@@ -36,17 +36,20 @@ export const CreateTask = () => {
       <Stack>
         <TextInput
           label={t('table.title')}
-          {...form.register("title", { required: true })}
+          {...form.register("title", { required: t('form.required-filed') })}
+          error={form.formState.errors.title?.message}
         />
 
         <TextInput
           label={t('table.desc')}
-          {...form.register("description")}
+          {...form.register("description", { required: t('form.required-filed') })}
+          error={form.formState.errors.description?.message}
         />
 
         <Controller
           name='status'
           control={form.control}
+          rules={{ required: t('form.required-filed') }}
           render={({ field }) => (
             <Select
               label={t('table.status')}
@@ -65,6 +68,7 @@ export const CreateTask = () => {
         <Controller
           name='priority'
           control={form.control}
+          rules={{ required: t('form.required-filed') }}
           render={({ field }) => (
             <Select
               label={t('table.priority')}
@@ -74,16 +78,17 @@ export const CreateTask = () => {
                 { value: "high", label: `${t('priorities.high')}` },
               ]}
               {...field}
-              error={form.formState.errors.status?.message}
+              error={form.formState.errors.priority?.message}
             />
           )}
         >
         </Controller>
 
         <TextInput
-          label={t('table.deadline')}
+          label={t('table.deadline', { required: t('form.required-filed') })}
           type="date"
-          {...form.register("deadline")}
+          {...form.register("deadline", { required: t('form.required-filed') })}
+          error={form.formState.errors.deadline?.message}
         />
 
         <Button type="submit" loading={isPending} variant="filled">
