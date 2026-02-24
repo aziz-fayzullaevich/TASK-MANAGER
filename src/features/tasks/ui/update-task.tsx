@@ -3,13 +3,14 @@ import { useUpdateTask } from "../queries/tasks-queries";
 import type { Tasks } from "../types/tasks-types";
 import { Button, Select, Stack, TextInput } from "@mantine/core";
 import { useTranslation } from "react-i18next";
+import { CustomForm } from "../../../shared/ui/custom-form";
 
 export const UpdateTask = ({ task }: { task: Tasks }) => {
     const { t } = useTranslation();
 
     const { mutate: updateTask, isPending } = useUpdateTask();
 
-    const { register, handleSubmit, control, formState: { errors } } = useForm<Partial<Tasks>>({
+    const form = useForm<Partial<Tasks>>({
         defaultValues: {
             title: task.title,
             description: task.description,
@@ -24,23 +25,23 @@ export const UpdateTask = ({ task }: { task: Tasks }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <CustomForm methods={form} onSubmit={(onSubmit)}>
             <Stack gap="md">
                 <TextInput
                     label={t('table.title')}
-                    {...register("title", { required: t('form.required-filed') })}
-                    error={errors.title?.message}
+                    {...form.register("title", { required: t('form.required-filed') })}
+                    error={form.formState.errors.title?.message}
                 />
 
                 <TextInput
                     label={t('table.desc')}
-                    {...register("description", { required: t('form.required-filed') })}
-                    error={errors.description?.message}
+                    {...form.register("description", { required: t('form.required-filed') })}
+                    error={form.formState.errors.description?.message}
                 />
 
                 <Controller
                     name="status"
-                    control={control}
+                    control={form.control}
                     rules={{ required: t('form.required-filed') }}
                     render={({ field }) => (
                         <Select
@@ -51,14 +52,14 @@ export const UpdateTask = ({ task }: { task: Tasks }) => {
                                 { value: "in_progress", label: `${t('statuses.in-progress')}` },
                                 { value: "done", label: `${t('statuses.done')}` },
                             ]}
-                            error={errors.status?.message}
+                            error={form.formState.errors.status?.message}
                         />
                     )}
                 />
 
                 <Controller
                     name="priority"
-                    control={control}
+                    control={form.control}
                     rules={{ required: t('form.required-filed') }}
                     render={({ field }) => (
                         <Select
@@ -69,7 +70,7 @@ export const UpdateTask = ({ task }: { task: Tasks }) => {
                                 { value: "medium", label: `${t('priorities.medium')}` },
                                 { value: "high", label: `${t('priorities.high')}` },
                             ]}
-                            error={errors.priority?.message}
+                            error={form.formState.errors.priority?.message}
                         />
                     )}
                 />
@@ -77,8 +78,8 @@ export const UpdateTask = ({ task }: { task: Tasks }) => {
                 <TextInput
                     label={t('table.deadline')}
                     type="date"
-                    {...register("deadline", { required: t('form.required-filed') })}
-                    error={errors.deadline?.message}
+                    {...form.register("deadline", { required: t('form.required-filed') })}
+                    error={form.formState.errors.deadline?.message}
                 />
 
                 <Button
@@ -90,6 +91,6 @@ export const UpdateTask = ({ task }: { task: Tasks }) => {
                     {t('form.update')}
                 </Button>
             </Stack>
-        </form>
+        </CustomForm>
     )
 }
