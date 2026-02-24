@@ -3,13 +3,17 @@ import { useDisclosure } from "@mantine/hooks";
 import { Outlet, useNavigate } from "react-router-dom";
 import { ROUTES } from "../routes/routes";
 import { useTranslation } from "react-i18next";
-import { HiGlobeAlt } from "react-icons/hi2";
+import { HiGlobeAlt, HiOutlineClipboardDocumentCheck, HiOutlineCog8Tooth } from "react-icons/hi2";
 
 const Layout = () => {
-    const [opened, { toggle }] = useDisclosure();
+    const [opened, { toggle, close }] = useDisclosure();
     const navigate = useNavigate();
-
     const { t, i18n } = useTranslation();
+
+    const handleNavigate = (path: string) => {
+        navigate(path);
+        close();
+    };
 
     const toggleLanguage = (lang: string) => {
         i18n.changeLanguage(lang);
@@ -29,7 +33,7 @@ const Layout = () => {
                             align={'center'}
                             gap='xs'
                             style={{ cursor: 'pointer' }}
-                            onClick={() => navigate(ROUTES.HOME)}
+                            onClick={() => handleNavigate(ROUTES.HOME)}
                         >
                             <Avatar src='/src/assets/logo.png' size={"sm"} />
                             <Text fw={700} size="lg">Task|Manager</Text>
@@ -66,13 +70,15 @@ const Layout = () => {
             <AppShell.Navbar p={'md'}>
                 <NavLink
                     label={t('main.tasks')}
-                    onClick={() => navigate(ROUTES.TASKS)}
+                    onClick={() => handleNavigate(ROUTES.TASKS)}
                     active={window.location.pathname === ROUTES.TASKS}
+                    leftSection={<HiOutlineClipboardDocumentCheck />}
                 />
                 <NavLink
                     label={t('main.settings')}
-                    onClick={() => navigate(ROUTES.SETTINGS)}
+                    onClick={() => handleNavigate(ROUTES.SETTINGS)}
                     active={window.location.pathname === ROUTES.SETTINGS}
+                    leftSection={<HiOutlineCog8Tooth />}
                 />
             </AppShell.Navbar>
 
