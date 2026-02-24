@@ -26,7 +26,7 @@ export const useCreateTask = () => {
 
             notifications.show({
                 title: i18n.t("main.success"),
-                message: i18n.t("main.success-update"),
+                message: i18n.t("main.success-create"),
                 color: "green",
             });
             modals.closeAll();
@@ -35,7 +35,7 @@ export const useCreateTask = () => {
         onError: (error: any) => {
             notifications.show({
                 title: i18n.t("main.error"),
-                message: error?.message || i18n.t("main.error-update"),
+                message: error?.message || i18n.t("main.error-create"),
                 color: "red",
             });
         },
